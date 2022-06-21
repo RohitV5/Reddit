@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React, { FC } from 'react';
-import { HomeIcon, ChevronDownIcon } from '@heroicons/react/solid';
+import { HomeIcon, ChevronDownIcon, SearchIcon } from '@heroicons/react/solid';
 // import { StarIcon } from '@heroicons/react/outline';
 
 const Header: FC = function () {
@@ -19,6 +19,17 @@ const Header: FC = function () {
         <p className="flex-1 hidden ml-2 lg:inline">Home</p>
         <ChevronDownIcon className="w-5 h-5" />
       </div>
+
+      {/* Search box */}
+      <form className="flex items-center flex-1 px-3 py-1 space-x-2 bg-gray-100 border border-gray-200 rounded-sm">
+        <SearchIcon className="w-6 h-6 text-gray-400" />
+        <input
+          type="text"
+          className="flex-1 bg-transparent outline-none"
+          placeholder="Search Reddit"
+        />
+        <button type="submit" hidden aria-label="submit" />
+      </form>
     </div>
   );
 };
