@@ -77,7 +77,11 @@ const Header: FC = function () {
               alt=""
             />
           </div>
-          <p className="text-gray-400">Sign Out</p>
+          <div className="flex-1 text-xs">
+            <p className="truncate">{session?.user?.name}</p>
+            <p className="text-gray-400">1 Karma</p>
+          </div>
+          <ChevronDownIcon className="flex-shrink-0 h-5 text-gray-500" />
         </div>
       ) : (
         <div
