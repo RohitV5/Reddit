@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 import Avatar from './Avatar';
 import client from '../apollo-client';
 import { ADD_POST, ADD_SUBREDDIT } from '../graphql/mutations';
-import { GET_ALL_POSTS } from '../graphql/queries';
+import { GET_SUBREDDIT_BY_TOPIC } from '../graphql/queries';
 
 type FormData = {
   postTitle: string;
@@ -37,7 +37,7 @@ const PostBox: FC = function () {
       const {
         data: { getSubredditListByTopic },
       } = await client.query({
-        query: GET_ALL_POSTS,
+        query: GET_SUBREDDIT_BY_TOPIC,
         variables: {
           topic: formData.subreddit,
         },

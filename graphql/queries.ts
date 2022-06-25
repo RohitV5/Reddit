@@ -24,4 +24,4 @@ export const GET_SUBREDDIT_BY_TOPIC = gql`
   }
 `;
 
-export default { ADD_POST: GET_ALL_POSTS };
+export default { GET_SUBREDDIT_BY_TOPIC, GET_ALL_POSTS };
