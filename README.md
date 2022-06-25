@@ -21,4 +21,4 @@ for NEXT_PUBLIC_STEPZEN_KEY ==>stepzen whoami --apikey
 Dicebear avatars for random avatars.
 
 
-2:10
+2:35
