@@ -2,15 +2,9 @@
 
 ![reddit](https://user-images.githubusercontent.com/23634935/175880848-2b631d6f-d116-4858-a767-19215b435a69.png)
 
-NextJS
-React
-SQL
-Supabase
-StepZen
-GraphQL
-Typescript
-Tailwind
-React hook form
+<h1 align="center"> NextJS | React | SQL | Supabase | StepZen | GraphQL | Typescript | Tailwind | React hook form  </h1>
+
+
 
 Create postgres db in supabase,
 connect it with stepzen graphql service using stepzen init
