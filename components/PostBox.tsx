@@ -16,7 +16,11 @@ type FormData = {
   subreddit: string;
 };
 
-const PostBox: FC = function () {
+type Props = {
+  subreddit?: string;
+};
+
+const PostBox: FC<Props> = function ({ subreddit }) {
   const { data: session } = useSession();
 
   const {
@@ -42,7 +46,7 @@ const PostBox: FC = function () {
       } = await client.query({
         query: GET_SUBREDDIT_BY_TOPIC,
         variables: {
-          topic: formData.subreddit,
+          topic: subreddit || formData.subreddit,
         },
       });
 
@@ -110,7 +114,11 @@ const PostBox: FC = function () {
           className="flex-1 p-2 pl-5 rounded-md outline-none bg-gray-50"
           type="text"
           placeholder={
-            session ? 'Create a post by entering a title' : 'Sign in to post'
+            session
+              ? subreddit
+                ? `Create a post in r/${subreddit}`
+                : 'Create a post by entering a title'
+              : 'Sign in to post'
           }
         />
 
@@ -134,17 +142,17 @@ const PostBox: FC = function () {
               placeholder="Text (optional)"
             />
           </div>
-
-          <div className="flex items-center px-2">
-            <p className="min-w-[90px]">Subreddit:</p>
-            <input
-              className="flex-1 p-2 m-2 outline-none bg-blue-50"
-              {...register('subreddit', { required: true })}
-              placeholder="i.e. reactjs"
-              type="text"
-            />
-          </div>
-
+          {!subreddit && (
+            <div className="flex items-center px-2">
+              <p className="min-w-[90px]">Subreddit:</p>
+              <input
+                className="flex-1 p-2 m-2 outline-none bg-blue-50"
+                {...register('subreddit', { required: true })}
+                placeholder="i.e. reactjs"
+                type="text"
+              />
+            </div>
+          )}
           {imageBoxOpen && (
             <div className="flex items-center px-2">
               <p className="min-w-[90px]">Image URL:</p>

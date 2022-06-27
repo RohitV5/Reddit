@@ -22,7 +22,7 @@ const Header: FC = function () {
   const { data: session } = useSession();
 
   return (
-    <div className="sticky top-0 z-50 flex px-4 py-2 bg-white shadow-sm">
+    <div className="sticky top-0 z-50 flex items-center px-4 py-2 bg-white shadow-sm">
       <div className="relative flex-shrink-0 w-20 h-10 cursor-pointer">
         <Image objectFit="contain" src="/reddit-text.webp" layout="fill" />
       </div>
