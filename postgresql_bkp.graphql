@@ -24,7 +24,7 @@ type Post {
       query: "getSubredditListById"
       arguments: [{ name: "id", field: "subreddit_id" }]
     )
-  comment: [Comment]
+  comments: [Comment]
     @materializer(
       query: "getCommentsByPostId"
       arguments: [{ name: "post_id", field: "id" }]
@@ -118,10 +118,25 @@ type Query {
   getPostList: [Post]
     @dbquery(
       type: "postgresql"
-      schema: "public"
-      table: "post"
+      query: """
+      SELECT * from "post"
+      ORDER BY "post"."created_at" desc
+      """
       configuration: "postgresql_config"
     )
+
+  getPostListByTopic(topic: String!): [Post]
+    @dbquery(
+      type: "postgresql"
+      query: """
+      SELECT * from "post"
+      JOIN "subreddit" on "subreddit"."id" = "post"."subreddit_id"
+      WHERE "subreddit"."topic" = $1
+      ORDER BY "post"."created_at" desc
+      """
+      configuration: "postgresql_config"
+    )
+
   getSubredditList: [Subreddit]
     @dbquery(
       type: "postgresql"

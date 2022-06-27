@@ -34,6 +34,7 @@
     "@typescript-eslint/no-unsafe-argument": "off",
     "@typescript-eslint/no-unsafe-any": "off",
     "@typescript-eslint/indent": "off",
+    "no-nested-ternary": "off",
     "@typescript-eslint/no-unsafe-assignment": "off",
     "react/jsx-one-expression-per-line": ["off", { "allow": "none" }],
     "react/react-in-jsx-scope": "off",
