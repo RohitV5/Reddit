@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 import Avatar from './Avatar';
 import client from '../apollo-client';
 import { ADD_POST, ADD_SUBREDDIT } from '../graphql/mutations';
-import { GET_SUBREDDIT_BY_TOPIC } from '../graphql/queries';
+import { GET_ALL_POSTS, GET_SUBREDDIT_BY_TOPIC } from '../graphql/queries';
 
 type FormData = {
   postTitle: string;
@@ -24,10 +24,13 @@ const PostBox: FC = function () {
     // setValue,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm<FormData>();
   const [imageBoxOpen, setImageBoxOpen] = useState<boolean>(false);
-  const [addPost] = useMutation(ADD_POST);
+  const [addPost] = useMutation(ADD_POST, {
+    refetchQueries: [GET_ALL_POSTS, 'getPostList'],
+  });
   const [addSubreddit] = useMutation(ADD_SUBREDDIT);
 
   const onSubmit = handleSubmit(async (formData) => {
@@ -87,7 +90,7 @@ const PostBox: FC = function () {
         });
         // console.log('New post added', newPost);
       }
-
+      reset();
       // After the post has been added
       toast.success('New post created', { id: notification });
     } catch (e) {
