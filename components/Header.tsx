@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React, { FC } from 'react';
+import Link from 'next/link';
 import {
   HomeIcon,
   ChevronDownIcon,
@@ -24,7 +25,9 @@ const Header: FC = function () {
   return (
     <div className="sticky top-0 z-50 flex items-center px-4 py-2 bg-white shadow-sm">
       <div className="relative flex-shrink-0 w-20 h-10 cursor-pointer">
-        <Image objectFit="contain" src="/reddit-text.webp" layout="fill" />
+        <Link href="/">
+          <Image objectFit="contain" src="/reddit-text.webp" layout="fill" />
+        </Link>
       </div>
 
       <div className="flex items-center mx-7 xl:min-w-[300px]">

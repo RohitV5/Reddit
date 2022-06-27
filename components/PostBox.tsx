@@ -103,7 +103,7 @@ const PostBox: FC<Props> = function ({ subreddit }) {
   });
   return (
     <form
-      className="sticky z-50 p-2 bg-white border border-gray-300 rounded-md top-16"
+      className="sticky z-50 p-2 bg-white border border-gray-300 rounded-md top-20 top-16"
       onSubmit={onSubmit}
     >
       <div className="flex items-center space-x-3">
