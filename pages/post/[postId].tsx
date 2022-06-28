@@ -69,6 +69,7 @@ const PostPage: NextPage = function () {
           />
 
           <button
+            disabled={!session}
             type="submit"
             className="p-3 font-semibold text-white bg-red-500 rounded-full disabled:bg-gray-200"
           >
